@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-AsyncStorage.clear();
+//AsyncStorage.clear();
 //addDeck('init deck');
 dumpKeys();
 
@@ -50,21 +50,15 @@ export function addDeck(title) {
 }
 
 export function addCardToDeck(title, card) {
-  // console.log("add card", title, card.question, card.answer);
-  
-  try {
-    AsyncStorage.getItem(title).then(result => {
-      const data = JSON.parse(result);
+  console.log('api/addCardToDeck');
+  return AsyncStorage.getItem(title).then(result => {
+    const data = JSON.parse(result);
 
-      let questions = data.questions;
-      questions.push(card);
+    let questions = data.questions;
+    questions.push(card);
 
-      AsyncStorage.mergeItem(title, JSON.stringify({
-        questions
-      }));
-    });
-  } catch (error) {
-    console.log(error);
-  }
-  return "thanks"
+    AsyncStorage.mergeItem(title, JSON.stringify({
+      questions
+    }));
+  });
 }

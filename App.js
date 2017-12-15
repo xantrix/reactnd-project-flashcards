@@ -8,6 +8,8 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { Constants } from 'expo';
 import HomeDeck from './components/HomeDeck';
 import AddDeck from './components/AddDeck';
+import AddQuestion from './components/AddQuestion';
+import Quiz from './components/Quiz';
 import DetailDeck from './components/DetailDeck';
 import reducer from './reducers'
 import { setLocalNotification } from './utils/helpers';
@@ -46,17 +48,17 @@ const MainNavigator =  StackNavigator({
     navigationOptions: {
       headerTintColor: "white",
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: "black"
 
       }
     }
   },
-  /*AddQuestion: {
+  AddQuestion: {
     screen: AddQuestion,
     navigationOptions: {
       headerTintColor: "white",
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: "black"
 
       }
     }
@@ -66,11 +68,11 @@ const MainNavigator =  StackNavigator({
     navigationOptions: {
       headerTintColor: "white",
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: "black"
 
       }
     }
-  }*/
+  }
 });
 
 function CustomStatusBar ({ backgroundColor, ...props }) {

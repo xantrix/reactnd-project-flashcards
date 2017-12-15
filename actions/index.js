@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { getDecks, getDeck, addDeck } from '../utils/api';
+import { getDecks, getDeck, addDeck, addCardToDeck } from '../utils/api';
 
 import {
   FETCH_DECKS,
@@ -57,6 +57,20 @@ export function getDeckDetails(entryId) {
           type: FETCH_SINGLE_DECK,
           payload: JSON.parse(cardDeck)
         })
+      });
+  }
+}
+
+export function addCard(title, card) {
+  return (dispatch) => {
+    addCardToDeck(title, card)
+      .then(data => {
+        dispatch(
+          getDeckDetails(title)
+        );
+        dispatch(
+          fetchDecks()
+        );
       });
   }
 }

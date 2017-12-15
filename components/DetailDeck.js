@@ -23,22 +23,24 @@ class DetailDeck extends Component {
     this.props.navigation.goBack();
   }
 
-  goToAddQuestion = () => {
+  goToAddQuestion() {
+    const title = this.props.title; 
     this.props.navigation.navigate(
       'AddQuestion',
       {
-        navTitle: this.props.title,
-        title: this.props.title
+        navTitle: title,
+        title: title
       }
     );    
   }
 
-  goToQuiz = () => {
+  goToQuiz() {
     this.props.navigation.navigate(
       'Quiz',
       {
         navTitle: this.props.title,
-        questions: this.props.questions }
+        questions: this.props.questions //send questions to component
+      }
     );    
   }
 
@@ -63,7 +65,7 @@ class DetailDeck extends Component {
               backgroundColor='#03A9F4'
               buttonStyle={styles.buttonStyle}
               title='Add Card'
-              onPress={this.goToAddQuestion()}
+              onPress={() => this.goToAddQuestion()}
             />
           </View>
           
@@ -73,7 +75,7 @@ class DetailDeck extends Component {
               backgroundColor='#96C051'
               buttonStyle={[styles.buttonStyle, { marginTop: 10 }]}
               title='Start Quiz'
-              onPress={this.goToQuiz()}
+              onPress={() => this.goToQuiz()}
             />
           </View>
         </Card>
@@ -93,7 +95,7 @@ class DetailDeck extends Component {
 
 const styles = {
   buttonStyle: {
-    borderRadius: 0,
+    borderRadius: 50,
     marginLeft: 0,
     marginRight: 0,
     marginBottom: 0,

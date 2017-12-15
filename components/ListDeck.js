@@ -10,7 +10,12 @@ class ListDeck extends Component {
     this.props.fetchDecks();
   }
 
-/*   goToDetailDeck = (item) => {
+  /**
+   * to avoid cannot update during an existing state transition navigation
+   * funcName() {...}
+   * onPress={() => this.funcName()}
+   */
+   goToDetailDeck(item) {
     this.props.navigation.navigate(
       'DetailDeck',
       {
@@ -18,20 +23,20 @@ class ListDeck extends Component {
         navTitle: item.title
       }
     );    
-  } */
+  }
 
   renderDeck = ({ item }) => {
     return (
        <TouchableOpacity
         onPress={
-          //this.goToDetailDeck(item) //must be a pure function
-          () => this.props.navigation.navigate(
+          () => this.goToDetailDeck(item)
+          /*() => this.props.navigation.navigate(
             'DetailDeck',
             {
               entryId: item.key,
               navTitle: item.title
             }
-          )
+          )*/
         }
       >
         <View>
